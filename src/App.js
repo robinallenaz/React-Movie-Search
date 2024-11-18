@@ -12,7 +12,6 @@ export default function App() {
   // State to hold movie data
   const [movie, setMovie] = useState(null);
 
-  // Function to get movies
   const getMovie = async (searchTerm) => {
     // Make fetch request and store the response
     const response = await fetch(
@@ -24,8 +23,11 @@ export default function App() {
     setMovie(data);
   };
 
-  // We pass the getMovie function as a prop called moviesearch
-  // We pass movie as props to movie display
+  // This will run on the first render but not on subsquent renders
+  useEffect(() => {
+    getMovie("Clueless");
+  }, []);
+
   return (
     <div className="App">
       <Form moviesearch={getMovie} />
