@@ -14,6 +14,7 @@ export default function App() {
 
   const getMovie = async (searchTerm) => {
     // Make fetch request and store the response
+   try {
     const response = await fetch(
       `http://www.omdbapi.com/?apikey=${apiKey}&t=${searchTerm}`
     );
@@ -21,7 +22,10 @@ export default function App() {
     const data = await response.json();
     // Set the Movie state to the received data
     setMovie(data);
-  };
+  } catch (e) {
+    console.log(error);
+  }
+   } 
 
   // This will run on the first render but not on subsquent renders
   useEffect(() => {
