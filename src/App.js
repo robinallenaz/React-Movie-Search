@@ -23,7 +23,7 @@ export default function App() {
     // Set the Movie state to the received data
     setMovie(data);
   } catch (e) {
-    console.log(error);
+    console.log(e);
   }
    } 
 
